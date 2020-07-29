@@ -1,0 +1,11 @@
+<%= 
+    count = 0
+    @new_phrase = nil
+    (1..@num.to_i).collect do |i|
+        if @phrase.include?("%20")
+            @phrase.split("%20").join(" ") + ".\n"
+        else
+            @phrase + ".\n"
+        end
+    end.join("")
+%>
