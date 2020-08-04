@@ -25,4 +25,23 @@ class App < Sinatra::Base
     "#{params[:word1]} #{params[:word2]} #{params[:word3]} #{params[:word4]} #{params[:word5]}."
   end
 
+  get '/:operation/:number1/:number2' do
+    @number1 = params[:number1].to_i
+    @number2 = params[:number2].to_i
+    @operation = params[:operation]
+    @operator = ""
+    case @operation
+    when "multiply"
+      @operator = "*"
+    when "divide"
+      @operator = "/"
+    when "add"
+      @operator = "+"
+    when "subtract"
+      @operator = "-"
+    end
+    @result = @number1.send(@operator, @number2)
+    "#{@result}"
+  end
+
 end
